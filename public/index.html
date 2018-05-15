@@ -31,6 +31,8 @@
 
             while (board[row][col] !== -1 && row > 0){  row -= 1;}
 
+            if(board[row][col] !== -1){ return; }
+
             console.log('row = ' + row + ' col = ' + col);
 
             // update screen
