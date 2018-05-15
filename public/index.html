@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Connect 4</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script>
+        // 6 x 6 board
+        var board = [
+            [-1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1],
+            [-1, -1, -1, -1, -1, -1]
+        ];
+
+        var toggle = 1;
+
+        function mouseEventHandler(event) {
+
+            var posX = event.clientX;
+            var posY = event.clientY;
+
+            var i = 0;
+            var j = Math.floor(posY / 100) % board.length;
+            console.log(j);
+            while (board[i][j] === -1 && i < board.length-1){ i += 1; }
+
+            if(board[i][j] !== -1){
+                console.log("return");
+                return; }
+
+            console.log(i + " , " + j);
+            // update screen
+            var ctx = document.getElementById('board').getContext('2d');
+            ctx.beginPath();
+
+
+            console.log();
+
+            ctx.arc( j + 50, i * 100 + 50, 50, 0, 2*Math.PI, false);
+            ctx.fillStyle = 'yellow';
+            ctx.fill();
+            ctx.stroke();
+
+
+            board[i][j] = toggle;
+
+            if(toggle === 1){
+                toggle = 0;
+            }else{
+                toggle = 1;
+            }
+
+            console.log(board);
+
+        }
+        
+        function mapper() {
+            
+        }
+        
+        function initUI() {
+            var ctx = document.getElementById('board').getContext('2d');
+
+
+
+            var x = 0;
+            var y = 0;
+            var w = document.getElementById('board').width;
+            var h = document.getElementById('board').height;
+
+
+
+            for(var dx = 0; dx <= w; dx += 100){
+                for(var dy = 0; dy <= h; dy += 100){
+                    ctx.rect(dx, dy, 100, 100);
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.arc(dx, dy, 100, 0, 2*Math.PI, false);
+
+                    ctx.beginPath();
+                    ctx.arc(dx - 50, dy + 50, 50, 0, 2*Math.PI, false);
+                    ctx.fillStyle = 'grey';
+                    ctx.fill();
+
+                    ctx.stroke();
+
+
+                }
+            }
+        }
+
+        function drawCircle(posX, posY, radius) {
+            var ctx = document.getElementById('board').getContext('2d');
+            ctx.beginPath();
+            ctx.arc(posX, posY, radius, 0, 2*Math.PI, false);
+            ctx.fillStyle = 'black';
+            ctx.stroke();
+        }
+
+    </script>
+
+
+</head>
+
+<script>
+    $(function () {
+        initUI();
+    });
+</script>
+<body>
+
+<canvas id="board" height="600" width="600" style="background-color: #00B7FF;" onclick="mouseEventHandler(event);">
+
+</canvas>
+
+</body>
+</html>
