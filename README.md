@@ -5,6 +5,8 @@ To run:
 
 Url: `localhost:5000`
 
+[https://connect4-demo.herokuapp.com/](https://connect4-demo.herokuapp.com/)
+
 
 The model of the game is a 2d-array. Initially, all the cells are set to -1.
 
