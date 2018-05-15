@@ -33,8 +33,6 @@
 
             console.log('row = ' + row + ' col = ' + col);
 
-            if(board[row][col] !== -1){ return; }
-
             // update screen
             var ctx = document.getElementById('board').getContext('2d');
             ctx.beginPath();
@@ -45,18 +43,18 @@
 
             board[row][col] = player;
 
-            /*
             if(checkWinner(player)){
-                console.log("winner");
-            }*/
+
+                ctx.font = "30px Arial";
+                ctx.fillText("player " + player + " wins",250, 300);
+            }
 
             if(player === 1){
-                player = 0;
+                player = 2;
             }else{
                 player = 1;
             }
 
-            console.log(board);
 
         }
 
@@ -96,14 +94,8 @@
         function initUI() {
             var ctx = document.getElementById('board').getContext('2d');
 
-
-
-            var x = 0;
-            var y = 0;
             var w = document.getElementById('board').width;
             var h = document.getElementById('board').height;
-
-
 
             for(var dx = 0; dx <= w; dx += 100){
                 for(var dy = 0; dy <= h; dy += 100){
@@ -119,19 +111,10 @@
                     ctx.fill();
 
                     ctx.stroke();
-
-
                 }
             }
         }
 
-        function drawCircle(posX, posY, radius) {
-            var ctx = document.getElementById('board').getContext('2d');
-            ctx.beginPath();
-            ctx.arc(posX, posY, radius, 0, 2*Math.PI, false);
-            ctx.fillStyle = 'black';
-            ctx.stroke();
-        }
 
     </script>
 
