@@ -121,10 +121,11 @@
         }
         
         function reset(){
+            var ctx = document.getElementById('board').getContext('2d');
             
-            const context = document.getElementById('board').getContext('2d');
-
-            context.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, 600, 600);
+            
+           
             
          board = [
             [-1, -1, -1, -1, -1, -1],
