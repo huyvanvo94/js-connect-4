@@ -21,7 +21,7 @@
         var hasWinner = false; 
 
         function mouseEventHandler(event) {
-            if(hasWinner){ return; }
+            if(hasWinner){ reset(); return; }
             var posX = event.clientX;
             var posY = event.clientY;
 
@@ -121,6 +121,10 @@
         }
         
         function reset(){
+            
+            const context = document.getElementById('board').getContext('2d');
+
+            context.clearRect(0, 0, canvas.width, canvas.height);
             
          board = [
             [-1, -1, -1, -1, -1, -1],
